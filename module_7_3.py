@@ -14,7 +14,7 @@ class WordsFinder:
                     for i in self.punctuation:
                         line = line.replace(i, ' ')
                     words.extend(line.split())
-        all_words = {self.file_names[0]: words}
+                    all_words[file_name] = words
         return all_words
 
     def find(self, word):
@@ -22,7 +22,7 @@ class WordsFinder:
         word = word.lower()
         for key, value in self.get_all_words().items():
             if word in value:
-                first_words = {key: value.index(word) + 1}
+                first_words[key] = value.index(word) + 1
         return first_words
 
     def count(self, word):
@@ -31,7 +31,7 @@ class WordsFinder:
         word = word.lower()
         for key, value in self.get_all_words().items():
             word_count.extend(value)
-            count_words = {key: word_count.count(word)}
+            count_words[key] = word_count.count(word)
         return count_words
 
 
